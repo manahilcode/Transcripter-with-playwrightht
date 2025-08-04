@@ -21,7 +21,7 @@ test.describe("Full Flow Suite", () => {
     }
   });
 
-  test.only("TC02 - Verify Home Page", async ({ page }) => {
+  test("TC02 - Verify Home Page", async ({ page }) => {
     await page.goto(BASE_URL);
     const loginSteps = new LoginSteps(page);
     await loginSteps.login();
