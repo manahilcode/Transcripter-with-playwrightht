@@ -90,5 +90,7 @@ jobs:
             MESSAGE="⚠️ Playwright tests ran, but no summary was generated. Check logs for issues.\n\n[View GitHub Action Run]($ARTIFACT_URL)"
           fi
 
+          PAYLOAD=$(jq -n --arg content "$MESSAGE" '{content: $content}')
+
           curl -X POST -H "Content-Type: application/json" \
-            --data "{\"content\": \"$MESSAGE\"}" "$DISCORD_WEBHOOK_URL"
+            --data "$PAYLOAD" "$DISCORD_WEBHOOK_URL"
